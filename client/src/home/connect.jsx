@@ -103,6 +103,7 @@ Login.controller = function(){
 	};
 
 	ctrl.signup = function(){
+		console.log("######");
 		ctrl.new().firstname=ctrl.newUser.firstname();
 		ctrl.new().lastname=ctrl.newUser.lastname();
 		ctrl.new().password=ctrl.newUser.password();
@@ -129,13 +130,13 @@ Login.controller = function(){
 		m
 		.request({
 			method: "POST",
-			url: m.urls("user/session"),
+			url: m.urls("user","session"),
 			data: ctrl.new(),//new Object({"test":"test"})
 		})
 		.then(function(data){
 			console.log("3333333",data.data.token)
 			auth.setSession(data.data.token);
-			m.route("/dashboard");
+			m.route("/company");
 		});
 
 	}

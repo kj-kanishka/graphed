@@ -26,7 +26,7 @@ m.fadesOutPage = function(element, isInitialized, context) {
     }
 }
 
-var api = 'http://localhost:8080'
+var api = 'http://139.59.241.227:8000'
 
 m.urls = function(theClass, theObject, action) {
     var url = '';
