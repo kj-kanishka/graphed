@@ -1,22 +1,40 @@
 
 var Menu = {};
-
+var Graph = require('module/graph')
 //CTRL
+var ctrl = {}
 Menu.controller = function(){
-
+	
+	ctrl.addWebsite = m.prop()
+	ctrl.listWebsites = m.prop()
+	ctrl.addWebsite = function(){
+		var elem = Graph.container()
+		console.log(elem.html(this.view))
+	}
+	ctrl.listWebsites = function(){
+		m
+		.request({
+			method: "GET",
+			url: m.urls("company/website")
+		})
+		.then(function(data){
+			console.log(data)
+			m.route("/listwebsites");
+		});
+	}
 }
 
 
 Menu.view = function(){
 	return (
 		<div class="ui vertical menu">
-		  <a class="teal active item">
-		    Tasks
-		    <div class="ui teal label">1</div>
+		  <a class="teal active item" onclick={ctrl.addWebsite}>
+		    Add Website
+		    <div class="ui teal label">+</div>
 		  </a>
-		  <a class="item">
-		    Team
-		    <div class="ui label">51</div>
+		  <a class="item" onclick={ctrl.listWebsites}>
+		    List Websites
+		    <div class="ui label"></div>
 		  </a>
 		  <a class="item">
 		    Graphs
