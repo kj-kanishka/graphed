@@ -8,7 +8,6 @@ var Login = {};
 
 //CTRL
 Login.controller = function(){
-	
 	if(auth.isLoggedIn()()){
 		m.route("/dashboard");
 	}
@@ -20,7 +19,6 @@ Login.controller = function(){
 	ctrl.ErrorMsg = m.prop("Error msg here");
 	ctrl.newUser = {firstname:m.prop(""),lastname:m.prop(""),password:m.prop(""),email_id:m.prop("")};
 	ctrl.new=m.prop({});
-	//ctrl.newUser = m.prop({'first_name':"",'last_name':""});
 
 	ctrl.LoadGOne = function(element){
 		var elem = jQuery(element);
@@ -118,7 +116,7 @@ Login.controller = function(){
 		.then(function(data){
 			console.log("3333333",data.data.token)
 			auth.setSession(data.data.token);
-			m.route("/dashboard");
+			m.route("/company");
 		});
 
 	}

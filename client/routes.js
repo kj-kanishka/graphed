@@ -4,7 +4,8 @@ var routes = {
 	"/dashboard": require('module/dashboard'),
 	"/graph": require('module/graph'),
 	"/settings": require('module/settings'),
-	"/logout": require('module/logout')
+	"/logout": require('module/logout'),
+	"/company": require('module/company/company')
 }
 
 
