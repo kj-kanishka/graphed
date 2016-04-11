@@ -4,24 +4,17 @@ var company={};
 
 company.controller = function(){
 
-//if(auth.isLoggedIn()()){
-//	console.log("Auth.UserData",auth.UserData())
-//	console.log("auth.data",auth.data())
-	//check if user is logged in
 
-//	 }
-//	 console.log("auth.data",auth.data())
-//console.log("<<<<<<",auth.data());
-	//console.log(">>>>>>>",auth.user())
-	//console.log(auth.user()());
 	console.log("djhfgdjhf");
-	auth.test();
+	
+	auth.user(function(data){
+		console.log("callback",data)
+	});
 if(auth.isLoggedIn()())
 {
-	
-	console.log("dcdc",auth.data())
+
+	//console.log("dcdc",auth.data())
 }
-//console.log("user",user);
 
 }
 
