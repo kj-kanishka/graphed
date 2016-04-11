@@ -6,7 +6,9 @@ var routes = {
 	"/settings": require('module/settings'),
 	"/logout": require('module/logout'),
 	"/listwebsites": require('module/graph/websites'),
-	"/company": require('module/company/company')
+	"/company": require('module/company/company'),
+	"/website": require('module/company/website'),
+	"verify": require('module/home/verify')
 
 }
 

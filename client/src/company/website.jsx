@@ -1,8 +1,8 @@
-var company = {}
+var website = {}
 
 
 var ctrl={}
-company.controller = function(){
+website.controller = function(){
 
 
 	//redirect if cookie doesnt exists.
@@ -13,11 +13,10 @@ company.controller = function(){
 
 	
 
-
 	return ctrl;	
 }
 
-company.view = function(){
+website.view = function(){
 	return (
 		<div class="ui container" config={ctrl.viewConfig}>
 			{require('module/partials/header')}
@@ -31,18 +30,10 @@ company.view = function(){
 		    	<div class="ui column grid">
 			      <div class="column">
 			        <div class="ui raised segment">
-			          <h2>Add company</h2>
+			          <h2>Add website</h2>
 			          <div class="ui segment">
 			          <form class="ui large form"  >
-			      <div class="row">
 			      
-			      Company Name:
-				  <input type="text" name="name" ></input>
-				  </div>
-				  <div class="row">
-				  Description:
-				  <input type="text" name="description" ></input>
-				  </div>
 				  <div class="row">
 				  Website:
 				  <input type="text" name="Website" ></input>
@@ -70,4 +61,4 @@ company.view = function(){
 	)
 }
 
-module.exports = company;
+module.exports = website;
