@@ -1,22 +1,11 @@
-var Graph = {};
+var Websites = {}
 
-require('transition');
-
-
-
-Graph.SubRoutes = function(element){
-	console.log("set element")
-	Graph.container = m.prop(jQuery(element))
+Websites.SubRoutes = function (element) {
+	// body...
 }
+var ctrl={}
+Websites.controller = function(){
 
-Graph.header = m.prop("Welcome")
-
-//CTRL
-Graph.controller = function(){
-	
-
-
-	var ctrl = {};
 
 	//redirect if cookie doesnt exists.
 	// if(!auth.gotSession()){
@@ -50,9 +39,7 @@ Graph.controller = function(){
 	return ctrl;	
 }
 
-
-Graph.Load = function(ctrl){
-
+Websites.view = function(){
 	return (
 		<div class="ui container" config={ctrl.viewConfig}>
 			{require('module/partials/header')}
@@ -62,29 +49,21 @@ Graph.Load = function(ctrl){
 		    <div class="four wide column">
 		    	{require('module/partials/menu')}
 		    </div>
-		    <div class="twelve wide column" config={Graph.SubRoutes}>
+		    <div class="twelve wide column" config={Websites.SubRoutes}>
 		    	<div class="ui column grid">
 			      <div class="column">
 			        <div class="ui raised segment">
-			          <h2>{this.header()}</h2>
-			          <p>Welcome to graphed.io</p>
+			          <h2>Website List</h2>
+			          <div class="ui segment">
+			          Top
+			          </div>
 			        </div>
 			      </div>
 			    </div>
 		    </div>
 		  </div>
 		</div>
-	);
+	)
 }
 
-Graph.view = function(ctrl){
-	return (
-		this.Load(ctrl)
-		)
-	// return (
-	// 	auth.isLoggedIn()() ? this.Load(ctrl) : require('module/loader')
-	// )
-	
-}
-
-module.exports = Graph;
+module.exports = Websites;
