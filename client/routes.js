@@ -5,7 +5,9 @@ var routes = {
 	"/graph": require('module/graph'),
 	"/settings": require('module/settings'),
 	"/logout": require('module/logout'),
-	"/listwebsites": require('module/graph/websites')
+	"/listwebsites": require('module/graph/websites'),
+	"/company": require('module/company/company')
+
 }
 
 

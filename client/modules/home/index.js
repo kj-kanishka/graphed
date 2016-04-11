@@ -5,6 +5,8 @@ var HomePage = {};
 
 //CTRL
 HomePage.controller = function(){
+	console.logged("auth.userdatvdbdvba",auth.UserData());
+
 	if(auth.gotSession())
 		m.route("/dashboard");
 	else
