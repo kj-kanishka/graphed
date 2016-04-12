@@ -96,7 +96,6 @@ Auth.user = function(cb){
 	    	url:m.urls('ping'),
 	    	
 	    }).then(function(data){
-	    	console.log("88888888888",data)
 			cb(data)
 		})
 		
@@ -113,7 +112,6 @@ Auth.company = function(cb){
 	    	url:m.urls('company'),
 	    	
 	    }).then(function(data){
-	    	console.log("88888888888",data)
 			cb(data)
 		})
 		
@@ -131,7 +129,6 @@ Auth.projects = function(cb){
 	    	url:m.urls('company','website'),
 	    	
 	    }).then(function(data){
-	    	console.log("88888888888",data)
 			cb(data)
 		})
 		

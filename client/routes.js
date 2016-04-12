@@ -8,7 +8,7 @@ var routes = {
 	"/listwebsites": require('module/graph/websites'),
 	"/company": require('module/company/company'),
 	"/website": require('module/company/website'),
-	"verify": require('module/home/verify'),
+	"/verify": require('module/home/verify'),
 	"/websitedetails": require('module/graph/websitedetails')
 
 }
