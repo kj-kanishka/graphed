@@ -4,6 +4,7 @@ Website.SubRoutes = function (element) {
 	// body...
 }
 var ctrl={}
+ctrl.webpages=m.prop([])
 
 Website.controller = function(){
 
@@ -35,19 +36,28 @@ Website.controller = function(){
                 }
             })
 	}
-	// ctrl.loadWebsite = m.prop()
-	// ctrl.loadWebsite = function () {
-	// 	m.addGlobalHeader('authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.YWtzaGF5a3VtYXI1NzA3NzdjMmQ1ZTVmMTRmMDVhNmNjY2Rha3NoYXlAaGF0Y2hpdHVwLmNvbQ.w1pumA55gppaAjBl7f_cg5BmCM-3LHMp6wrQG6fl4mQ');
-	// 	m
-	// 	.request({
-	// 		method:"GET",
-	// 		url:m.urls("company/website")
-	// 	}).then(function(data){
-	// 		console.log(data);
-	// 		ctrl.Website(data.data.projects);
-	// 	})
-	// }
-	// ctrl.loadWebsite()
+	ctrl.loadWebsite = m.prop()
+	ctrl.loadWebsite = function () {
+		m.addGlobalHeader('authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.YWtzaGF5a3VtYXI1NzA3NzdjMmQ1ZTVmMTRmMDVhNmNjY2Rha3NoYXlAaGF0Y2hpdHVwLmNvbQ.w1pumA55gppaAjBl7f_cg5BmCM-3LHMp6wrQG6fl4mQ');
+		m
+		.request({
+			method:"GET",
+			url:m.urls("webpages/"+websiteId)
+		}).then(function(data){
+			console.log(data);
+			data.data.forEach(function(page){
+				m
+				.request({
+					method:'GET',
+					url:m.urls('users/'+page.pageId)
+				}).then(function(resp){
+					page.users = resp.data.users;
+					ctrl.webpages().push(page);
+				})
+			})
+		})
+	}
+	ctrl.loadWebsite()
 	// ctrl.loadwebsiteById = function(element){
 	// 	var elem = jQuery(element);
 	// 	Website.websiteId(element.attr("id"))
@@ -67,8 +77,20 @@ Website.view = function(){
 		    </div>
 		    <div class="twelve wide column" config={Website.SubRoutes}>
 		    	    <div class="ui raised segment">
-			          <h2>Website </h2>
-			          
+			          <h2>Webpages </h2>
+			          {
+			          	ctrl.webpages().map(function(val){
+			          		return  <div class="ui segment">
+			          					<div class="ui grid">
+			          						<div class="two wide column"><i class="world icon"></i></div>
+			          						<div class="ten wide column"><a   href={"websitedetails?id="+val.pageId}>{val.address}</a></div>
+			          						<div class="two wide column">users:{val.users}</div>
+			          						<div class="two wide column"><i class="remove icon"></i></div>
+			          					</div>
+			          				</div>
+
+			          	})
+			          }
 			         
 			        </div>
 			  </div>
