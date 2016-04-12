@@ -1,9 +1,32 @@
 var Websites = {}
 
 Websites.SubRoutes = function (element) {
+
 	// body...
 }
 var ctrl={}
+
+Websites.websiteId = m.prop()
+
+ctrl.websites=m.prop([
+      {
+        "_id": "570228210828dec30367481d",
+        "companyId": "570227c90828dec30367481c",
+        "active": true,
+        "websiteId": 325,
+        "website": "www.hatchitservices.com",
+        "__v": 0
+      },
+      {
+        "_id": "570228210828dec30367481d",
+        "companyId": "570227c90828dec30367481c",
+        "active": true,
+        "websiteId": 325,
+        "website": "www.google.com",
+        "__v": 0
+      }
+    ])
+
 Websites.controller = function(){
 
 
@@ -34,8 +57,22 @@ Websites.controller = function(){
                 }
             })
 	}
-
-
+	ctrl.loadWebsites = m.prop()
+	ctrl.loadWebsites = function () {
+		m.addGlobalHeader('authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.YWtzaGF5a3VtYXI1NzA3NzdjMmQ1ZTVmMTRmMDVhNmNjY2Rha3NoYXlAaGF0Y2hpdHVwLmNvbQ.w1pumA55gppaAjBl7f_cg5BmCM-3LHMp6wrQG6fl4mQ');
+		m
+		.request({
+			method:"GET",
+			url:m.urls("company/website")
+		}).then(function(data){
+			console.log(data);
+			ctrl.websites(data.data.projects);
+		})
+	}
+	ctrl.loadWebsites()
+	ctrl.loadwebsiteById = function(elem){
+		console.log(elem)
+	}
 	return ctrl;	
 }
 
@@ -50,17 +87,23 @@ Websites.view = function(){
 		    	{require('module/partials/menu')}
 		    </div>
 		    <div class="twelve wide column" config={Websites.SubRoutes}>
-		    	<div class="ui column grid">
-			      <div class="column">
-			        <div class="ui raised segment">
+		    	    <div class="ui raised segment">
 			          <h2>Website List</h2>
-			          <div class="ui segment">
-			          Top
-			          </div>
+			          {
+			          	ctrl.websites().map(function(val){
+			          		return  <div class="ui segment">
+			          					<div class="ui grid">
+			          						<div class="two wide column"><i class="world icon"></i></div>
+			          						<div class="twelve wide column"><a href="/website" id={val.websiteId} onclick={ctrl.loadwebsiteById}>{val.website}</a></div>
+			          						<div class="two wide column"><i class="remove icon"></i></div>
+			          					</div>
+			          				</div>
+
+			          	})
+			          }
+			         
 			        </div>
-			      </div>
-			    </div>
-		    </div>
+			  </div>
 		  </div>
 		</div>
 	)
