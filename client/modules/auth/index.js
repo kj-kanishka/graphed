@@ -87,10 +87,8 @@ Auth.isLoggedIn = m.prop(function(){
 	return Auth.PingServer(cookie);
 })
 
-Auth.data = m.prop({});
-
-Auth.user = function(){
-	console.log("22222");
+Auth.user = function(cb){
+	var Data=m.prop({});
 	var cookie = Auth.gotSession();
 	m
 	    .request({
@@ -98,26 +96,48 @@ Auth.user = function(){
 	    	url:m.urls('ping'),
 	    	
 	    }).then(function(data){
-	    	//console.log("data",data);
-	    	 
-			//USER=m.porp(data);
-			//console.log("USER",USER());
-		//	console.log("Auth.user()",Auth.data());
-		//console.log("Auth.data",Auth.data());
-			Auth.data= m.prop(data);
-			console.log("Auth.data",Auth.data())
+	    	console.log("88888888888",data)
+			cb(data)
 		})
-		//console.log("::::::::",USER());
-	return false
+		
 		
 }
-Auth.test = function(){
-	console.log("1111");
-	var u= m.prop({});
-	u=Auth.user();
-	console.log("uuuu",u)
-	console.log(Auth.data());
+
+
+Auth.company = function(cb){
+	var Data=m.prop({});
+	var cookie = Auth.gotSession();
+	m
+	    .request({
+	    	method:"GET",
+	    	url:m.urls('company'),
+	    	
+	    }).then(function(data){
+	    	console.log("88888888888",data)
+			cb(data)
+		})
+		
+		
 }
+
+
+
+Auth.projects = function(cb){
+	var Data=m.prop({});
+	var cookie = Auth.gotSession();
+	m
+	    .request({
+	    	method:"GET",
+	    	url:m.urls('company','website'),
+	    	
+	    }).then(function(data){
+	    	console.log("88888888888",data)
+			cb(data)
+		})
+		
+		
+}
+
 
 
 module.exports = Auth;

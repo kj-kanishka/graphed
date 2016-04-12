@@ -6,7 +6,6 @@ Websites.SubRoutes = function (element) {
 }
 var ctrl={}
 
-Websites.websiteId = m.prop()
 
 ctrl.websites=m.prop([
       {
@@ -70,9 +69,7 @@ Websites.controller = function(){
 		})
 	}
 	ctrl.loadWebsites()
-	ctrl.loadwebsiteById = function(elem){
-		console.log(elem)
-	}
+	
 	return ctrl;	
 }
 
@@ -88,13 +85,13 @@ Websites.view = function(){
 		    </div>
 		    <div class="twelve wide column" config={Websites.SubRoutes}>
 		    	    <div class="ui raised segment">
-			          <h2>Website List</h2>
+			          <h2>Websites List</h2>
 			          {
 			          	ctrl.websites().map(function(val){
 			          		return  <div class="ui segment">
 			          					<div class="ui grid">
 			          						<div class="two wide column"><i class="world icon"></i></div>
-			          						<div class="twelve wide column"><a href="/website" id={val.websiteId} onclick={ctrl.loadwebsiteById}>{val.website}</a></div>
+			          						<div class="twelve wide column"><a   href={"websitedetails?id="+val.websiteId}>{val.website}</a></div>
 			          						<div class="two wide column"><i class="remove icon"></i></div>
 			          					</div>
 			          				</div>
